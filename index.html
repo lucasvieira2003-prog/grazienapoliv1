@@ -1737,6 +1737,15 @@ body.menu-open .whatsapp-float { visibility:hidden; }
 }
 @media(prefers-reduced-motion:reduce) { .js .reveal { opacity:1;transform:none; } }
 
+
+/* Keep selection stable during pointer movement and mobile swipes. */
+.pizza-choice { display:none; }
+.pizza-accordion__price { font-size:13px;opacity:1; }
+.pizza-accordion__item.is-active .pizza-accordion__price { padding:7px 10px;border:1px solid #ffffff55;border-radius:20px;background:#11131266; }
+.menu-size { align-self:center;font-size:12px;line-height:1.5;color:var(--muted);padding:8px 0; }
+@media(max-width:820px) {
+ .pizza-accordion > .pizza-accordion__item { flex:0 0 var(--pizza-card-w)!important;min-width:var(--pizza-card-w)!important; }
+}
 </style>
 </head>
 <body>
@@ -2305,9 +2314,7 @@ body.menu-open .whatsapp-float { visibility:hidden; }
             selectPizza(key, true);
           }
         });
-        if (finePointerMQ.matches) {
-          card.addEventListener('mouseenter', function () { selectPizza(key, false); });
-        }
+
       });
 
       // Real-time swipe sync. requestAnimationFrame keeps it smooth and avoids a delayed debounce.
